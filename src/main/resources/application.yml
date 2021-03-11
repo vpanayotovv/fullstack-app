@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    # Put here your user name
+    username: vasko
+    # Put here your password
+    password: vasko
+    url: jdbc:mysql://localhost:3306/spring_exam_db?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
