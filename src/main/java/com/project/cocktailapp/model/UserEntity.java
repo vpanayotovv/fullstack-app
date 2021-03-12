@@ -1,60 +1,37 @@
 package com.project.cocktailapp.model;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "users")
-public class UserEntity {
+@Getter
+@Setter
+@NoArgsConstructor
+public class UserEntity extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+    @Column(nullable = false,unique = true)
     private String username;
 
+    @Column(nullable = false)
     private String password;
+
+    @Column(nullable = false,unique = true)
+    private String email;
+
+    @Column(nullable = false)
+    private LocalDateTime registerDate;
+
+    @Column(columnDefinition = "TEXT")
+    private String imgUrl;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private List<RoleEntity> roles = new ArrayList<>();
-
-    public UserEntity() {
-    }
-
-    public Long getId() {
-        return this.id;
-    }
-
-    public UserEntity setId(Long id) {
-        this.id = id;
-        return this;
-    }
-
-    public String getUsername() {
-        return this.username;
-    }
-
-    public UserEntity setUsername(String username) {
-        this.username = username;
-        return this;
-    }
-
-    public String getPassword() {
-        return this.password;
-    }
-
-    public UserEntity setPassword(String password) {
-        this.password = password;
-        return this;
-    }
-
-    public List<RoleEntity> getRoles() {
-        return this.roles;
-    }
-
-    public UserEntity setRoles(List<RoleEntity> roles) {
-        this.roles = roles;
-        return this;
-    }
 }
