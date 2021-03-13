@@ -6,8 +6,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "baseAlcohol")
-public class BaseAlcohol extends BaseEntity {
+@Table(name = "alcohols")
+public class AlcoholEntity extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private BaseAlcoholName baseName;

@@ -23,7 +23,7 @@ public class CocktailEntity extends BaseEntity {
 
     @NotNull
     @OneToOne
-    private BaseAlcohol base;
+    private AlcoholEntity baseAlcohol;
 
     @NotNull
     @Column(nullable = false,columnDefinition = "TEXT")

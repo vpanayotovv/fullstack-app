@@ -8,8 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/cocktails")
 public class CocktailController {
 
-    @GetMapping("/all")
+    @GetMapping
     public String allCocktails(){
         return "all-cocktails";
+    }
+
+    @GetMapping("/add")
+    public String add(){
+        return "add-cocktail";
     }
 }

@@ -1,5 +1,6 @@
 package com.project.cocktailapp.model;
 
+import com.project.cocktailapp.model.enums.Gender;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,6 +24,12 @@ public class UserEntity extends BaseEntity {
 
     @NotNull
     @Column(nullable = false)
+    private String firstName;
+
+    private String lastName;
+
+    @NotNull
+    @Column(nullable = false)
     private String password;
 
     @NotNull
@@ -35,6 +42,9 @@ public class UserEntity extends BaseEntity {
 
     @Column(columnDefinition = "TEXT")
     private String imgUrl;
+
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private List<RoleEntity> roles = new ArrayList<>();
