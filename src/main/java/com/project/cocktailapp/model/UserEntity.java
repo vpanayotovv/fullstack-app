@@ -17,15 +17,19 @@ import java.util.List;
 @NoArgsConstructor
 public class UserEntity extends BaseEntity {
 
+    @NotNull
     @Column(nullable = false,unique = true)
     private String username;
 
+    @NotNull
     @Column(nullable = false)
     private String password;
 
+    @NotNull
     @Column(nullable = false,unique = true)
     private String email;
 
+    @NotNull
     @Column(nullable = false)
     private LocalDateTime registerDate;
 
