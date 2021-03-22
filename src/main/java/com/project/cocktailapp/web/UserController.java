@@ -1,6 +1,9 @@
 package com.project.cocktailapp.web;
 import com.project.cocktailapp.model.binding.UserRegisterBindingModel;
 import com.project.cocktailapp.model.entity.enums.Gender;
+import com.project.cocktailapp.model.service.UserServiceModel;
+import com.project.cocktailapp.service.UserService;
+import org.modelmapper.ModelMapper;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +20,14 @@ import javax.validation.Valid;
 @RequestMapping("/users")
 public class UserController {
 
+    private final UserService userService;
+    private final ModelMapper modelMapper;
+
+    public UserController(UserService userService, ModelMapper modelMapper) {
+        this.userService = userService;
+        this.modelMapper = modelMapper;
+    }
+
     @GetMapping("/login")
     public String login(){
         return "login";
@@ -27,6 +38,8 @@ public class UserController {
         if (!model.containsAttribute("userRegisterBindingModel")){
             model.addAttribute("userRegisterBindingModel",new UserRegisterBindingModel());
             model.addAttribute("genders", Gender.values());
+            model.addAttribute("passwordNotMatch",false);
+            model.addAttribute("userExistsError",false);
         }
         return "register";
     }
@@ -44,9 +57,22 @@ public class UserController {
             return "redirect:register";
         }
 
-        System.out.println();
+        if (userService.userNameExists(userRegisterBindingModel.getUsername())) {
+            redirectAttributes.addFlashAttribute("userRegisterBindingModel", userRegisterBindingModel);
+            redirectAttributes.addFlashAttribute("userExistsError", true);
 
-        //TODO:reg user
+            return "redirect:/users/register";
+        }
+
+        if (!userRegisterBindingModel.getPassword().equals(userRegisterBindingModel.getConfirmPassword())){
+            redirectAttributes.addFlashAttribute("userRegisterBindingModel", userRegisterBindingModel);
+            redirectAttributes.addFlashAttribute("passwordNotMatch",true);
+
+            return "redirect:register";
+        }
+
+        UserServiceModel userServiceModel = this.modelMapper.map(userRegisterBindingModel,UserServiceModel.class);
+        userService.register(userServiceModel);
 
         return "redirect:/";
     }

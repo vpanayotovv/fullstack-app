@@ -18,6 +18,8 @@
 				<form th:object="${userRegisterBindingModel}"
 						th:action="@{/users/register}" method="POST">
 					<h3>Register</h3>
+					<h4 class="invalid-input" th:if="${passwordNotMatch}">Passwords do not match</h4>
+					<h4 class="invalid-input" th:if="${userExistsError}">User already exist</h4>
 					<div class="form-group">
 						<small th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="text-danger"></small>
 						<input th:field="*{firstName}" th:value="*{firstName}" type="text" placeholder="First Name" class="form-control">
