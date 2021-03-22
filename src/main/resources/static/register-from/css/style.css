@@ -204,4 +204,11 @@ button {
   button {
     margin-top: 60px; } }
 
+.invalid-input{
+  text-align: center;
+  font-family: "Poppins-SemiBold";
+  margin-bottom: 28px;
+  color: red;
+}
+
 /*# sourceMappingURL=style.css.map */
