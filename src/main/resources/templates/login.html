@@ -1,43 +1,41 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<meta charset="utf-8">
-		<title>Login</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		
-		<!-- MATERIAL DESIGN ICONIC FONT -->
-		<link rel="stylesheet" href="/register-from/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+          href="/register-from/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="/register-from/css/style.css">
+</head>
 
-		<!-- STYLE CSS -->
-		<link rel="stylesheet" href="/register-from/css/style.css">
-	</head>
+<body>
 
-	<body>
+<div class="wrapper" style="background-image: url('/register-from/images/pic01.jpg');">
+    <div class="inner">
+        <div class="image-holder">
+            <img src="/register-from/images/old-fashioned-cocktail.jpg" alt="">
+        </div>
+        <form th:action="@{/users/login}"
+              method="POST">
+            <h3>Login</h3>
+            <h4 class="invalid-input" th:if="${invalid_login}">Invalid Username or Password!</h4>
+            <div class="form-wrapper">
+                <input type="text" required minlength="3" maxlength="5" name="username" placeholder="Username"
+                       class="form-control">
+                <i class="zmdi zmdi-account"></i>
+            </div>
+            <div class="form-wrapper">
+                <input type="password" required minlength="2" name="password" placeholder="Password"
+                       class="form-control">
+                <i class="zmdi zmdi-lock"></i>
+            </div>
+            <button>Login
+                <i class="zmdi zmdi-arrow-right"></i>
+            </button>
+        </form>
+    </div>
+</div>
 
-		<div class="wrapper" style="background-image: url('/register-from/images/pic01.jpg');">
-			<div class="inner">
-				<div class="image-holder">
-					<img src="/register-from/images/old-fashioned-cocktail.jpg" alt="">
-				</div>
-				<form th:action="@{/users/login}"
-							method="POST">
-					<h3>Login</h3>
-					<h4 class="invalid-input" th:if="${invalid_login}" >Invalid Username or Password!</h4>
-					<div class="form-wrapper">
-						<input type="text" name="username" placeholder="Username" class="form-control">
-						<i class="zmdi zmdi-account"></i>
-					</div>
-					<div class="form-wrapper">
-						<input type="password" name="password" placeholder="Password" class="form-control">
-						<i class="zmdi zmdi-lock"></i>
-					</div>
-					<button>Login
-						<i class="zmdi zmdi-arrow-right"></i>
-					</button>
-				</form>
-			</div>
-		</div>
-		
-	</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</body>
 </html>
