@@ -1,8 +1,8 @@
 package com.project.cocktailapp.service;
 
-import com.project.cocktailapp.model.RoleEntity;
-import com.project.cocktailapp.model.UserEntity;
-import com.project.cocktailapp.model.enums.Gender;
+import com.project.cocktailapp.model.entity.RoleEntity;
+import com.project.cocktailapp.model.entity.UserEntity;
+import com.project.cocktailapp.model.entity.enums.Gender;
 import com.project.cocktailapp.repository.RoleRepository;
 import com.project.cocktailapp.repository.UserRepository;
 import org.slf4j.Logger;

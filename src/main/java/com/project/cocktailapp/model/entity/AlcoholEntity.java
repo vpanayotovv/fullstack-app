@@ -1,6 +1,6 @@
-package com.project.cocktailapp.model;
+package com.project.cocktailapp.model.entity;
 
-import com.project.cocktailapp.model.enums.BaseAlcoholName;
+import com.project.cocktailapp.model.entity.enums.BaseAlcoholName;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

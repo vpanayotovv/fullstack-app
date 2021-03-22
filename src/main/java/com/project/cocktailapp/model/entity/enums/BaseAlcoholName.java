@@ -1,4 +1,4 @@
-package com.project.cocktailapp.model.enums;
+package com.project.cocktailapp.model.entity.enums;
 
 public enum BaseAlcoholName {
     Gin,

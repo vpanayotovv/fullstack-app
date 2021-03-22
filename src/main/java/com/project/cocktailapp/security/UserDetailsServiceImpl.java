@@ -1,6 +1,6 @@
 package com.project.cocktailapp.security;
 
-import com.project.cocktailapp.model.UserEntity;
+import com.project.cocktailapp.model.entity.UserEntity;
 import com.project.cocktailapp.repository.UserRepository;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;

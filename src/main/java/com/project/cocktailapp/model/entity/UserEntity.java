@@ -1,6 +1,6 @@
-package com.project.cocktailapp.model;
+package com.project.cocktailapp.model.entity;
 
-import com.project.cocktailapp.model.enums.Gender;
+import com.project.cocktailapp.model.entity.enums.Gender;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

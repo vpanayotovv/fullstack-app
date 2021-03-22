@@ -1,6 +1,6 @@
-package com.project.cocktailapp.model;
+package com.project.cocktailapp.model.entity;
 
-import com.project.cocktailapp.model.enums.RoleName;
+import com.project.cocktailapp.model.entity.enums.RoleName;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

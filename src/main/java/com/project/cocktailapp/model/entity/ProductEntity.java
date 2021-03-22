@@ -1,4 +1,4 @@
-package com.project.cocktailapp.model;
+package com.project.cocktailapp.model.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

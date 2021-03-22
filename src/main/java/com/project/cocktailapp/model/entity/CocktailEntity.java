@@ -1,6 +1,6 @@
-package com.project.cocktailapp.model;
+package com.project.cocktailapp.model.entity;
 
-import com.project.cocktailapp.model.enums.MethodName;
+import com.project.cocktailapp.model.entity.enums.MethodName;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
