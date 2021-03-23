@@ -9,6 +9,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "cocktails")
@@ -36,9 +37,10 @@ public class CocktailEntity extends BaseEntity {
     @Column(nullable = false)
     private LocalDateTime addedOn;
 
-    @OneToMany
-    private List<ProductEntity> productEntities;
+    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    private Set<ProductEntity> products;
 
+    @Enumerated(EnumType.STRING)
     private MethodName method;
 
     @ManyToOne

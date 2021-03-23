@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Espresso Martini",
+    "baseAlcohol": "Vodka",
+    "videoUrl": "https://www.youtube.com/watch?v=nyRjNfDKQw4",
+    "imgUrl": "https://images.immediate.co.uk/production/volatile/sites/30/2020/10/Ultimate-espresso-martini-260c465.jpg",
+    "method": "SHAKE",
+    "products": [
+      {
+        "name": "Vodka",
+        "quantity": 50
+      },
+      {
+        "name": "Kalua",
+        "quantity": 30
+      },
+      {
+        "name": "Espresso",
+        "quantity": 1
+      },
+      {
+        "name": "Sample syrup",
+        "quantity": 15
+      }
+    ]
+  }
+]

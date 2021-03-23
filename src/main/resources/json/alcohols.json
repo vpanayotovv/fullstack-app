@@ -1,9 +1,37 @@
 [
-  {"baseName":"Vodka", "description":"sdadsdasdasdasdasdasda", "percentOfAlcohol":35.6},
-  {"baseName":"Gin", "description":"sdadsdasdasdasdasdasda", "percentOfAlcohol":38.3},
-  {"baseName":"Rum", "description":"sdadsdasdasdasdasdasda", "percentOfAlcohol":40},
-  {"baseName":"Liqueur", "description":"sdadsdasdasdasdasdasda", "percentOfAlcohol":20.5},
-  {"baseName":"Whiskey", "description":"sdadsdasdasdasdasdasda", "percentOfAlcohol":45.2},
-  {"baseName":"Tequila", "description":"sdadsdasdasdasdasdasda", "percentOfAlcohol":40.8},
-  {"baseName":"AlcoholFree", "description":"sdadsdasdasdasdasdasda", "percentOfAlcohol":0.0}
+  {
+    "baseName": "Vodka",
+    "description": "The most popular spirit in the world has something new to discover every day. Check out the bottles, brands and cocktail recipes to keep this white spirit at the top of your mixing list.",
+    "percentOfAlcohol": 35.6
+  },
+  {
+    "baseName": "Gin",
+    "description": "Though gin may be grounded in the juniper berry, it can be made using a whole range of botanicals, opening the spirit up to a wide range of flavors. Find out the newest bottles, distillation trends and cocktail recipes to introduce you to a whole new world of the clear spirit.",
+    "percentOfAlcohol": 38.3
+  },
+  {
+    "baseName": "Rum",
+    "description": "Rum lovers around the world owe a great debt to a simple plant, the sugar cane, which creates two main types: light and dark. The longer it has been aged, the more color and flavor it picks up from the wood. No matter the color, most rum is still made from molasses.",
+    "percentOfAlcohol": 40
+  },
+  {
+    "baseName": "Liqueur",
+    "description": "From fruity and sweet to bitter and spicy, liqueurs can add depth to your cocktails and even be the star of your next drink. Find out what new bottles, recipes and brands to expand your liqueur universe.",
+    "percentOfAlcohol": 20.5
+  },
+  {
+    "baseName": "Whiskey",
+    "description": "Whiskey is as much a broad categorization of spirits as it is a spirit type. You may know your scotch and bourbon, but countries around the world are producing whiskeys worth getting to know, including Ireland, Japan, Canada, Taiwan and Australia.",
+    "percentOfAlcohol": 45.2
+  },
+  {
+    "baseName": "Tequila",
+    "description": "All hail the agave plant. With the tequila industry in continual flux and mezcal growing in popularity every day, you'll want to stay informed about the newest tequila and mezcal bottles, brands and cocktail recipes.",
+    "percentOfAlcohol": 40.8
+  },
+  {
+    "baseName": "Vermouth",
+    "description": "Vermouth, a fortified wine flavored with herbs and spices, comes in two main varieties: sweet and dry. While it can be sipped on the rocks as a light aperitif, it also works in a wide range of cocktails.",
+    "percentOfAlcohol": 15.50
+  }
 ]

@@ -8,6 +8,7 @@ import com.project.cocktailapp.repository.AlcoholRepository;
 import com.project.cocktailapp.util.CustomFileReader;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.FileNotFoundException;
@@ -21,6 +22,7 @@ public class AlcoholServiceImpl implements AlcoholService {
     private final AlcoholRepository alcoholRepository;
     private final Logger logger;
 
+    @Autowired
     public AlcoholServiceImpl(CustomFileReader reader, Gson gson, ModelMapper modelMapper, AlcoholRepository alcoholRepository, Logger logger) {
         this.reader = reader;
         this.gson = gson;
@@ -31,13 +33,15 @@ public class AlcoholServiceImpl implements AlcoholService {
 
     @Override
     public void importAlcohols() throws FileNotFoundException {
-        String read = String.join("", reader.read(Constants.ALCOHOL_PATH));
-        AlcoholBindingModel[] alcoholBindingModels = this.gson.fromJson(read,AlcoholBindingModel[].class);
+        if (alcoholRepository.count() == 0) {
+            String read = String.join("", reader.read(Constants.ALCOHOL_PATH));
+            AlcoholBindingModel[] alcoholBindingModels = this.gson.fromJson(read, AlcoholBindingModel[].class);
 
-        for (AlcoholBindingModel alcoholBindingModel : alcoholBindingModels) {
-            AlcoholEntity alcoholEntity = modelMapper.map(alcoholBindingModel,AlcoholEntity.class);
-            alcoholRepository.save(alcoholEntity);
-            logger.info(alcoholEntity.getBaseName() + " is saved in DB");
+            for (AlcoholBindingModel alcoholBindingModel : alcoholBindingModels) {
+                AlcoholEntity alcoholEntity = modelMapper.map(alcoholBindingModel, AlcoholEntity.class);
+                alcoholRepository.save(alcoholEntity);
+                logger.info(alcoholEntity.getBaseName() + " is saved in DB");
+            }
         }
     }
 }

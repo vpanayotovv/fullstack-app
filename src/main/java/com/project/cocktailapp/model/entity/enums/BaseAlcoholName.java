@@ -7,5 +7,5 @@ public enum BaseAlcoholName {
     Whiskey,
     Tequila,
     Vodka,
-    AlcoholFree
+    Vermouth
 }

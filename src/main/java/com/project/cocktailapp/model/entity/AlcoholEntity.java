@@ -19,7 +19,7 @@ public class AlcoholEntity extends BaseEntity {
     private BaseAlcoholName baseName;
 
     @NotNull
-    @Column(nullable = false)
+    @Column(nullable = false,columnDefinition = "TEXT")
     private String description;
 
     @NotNull
