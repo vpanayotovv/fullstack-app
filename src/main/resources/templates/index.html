@@ -55,7 +55,7 @@
                         <li><a sec:authorize="!isAuthenticated()" href="/users/register">Register</a></li>
                         <li>
                             <form sec:authorize="isAuthenticated()" th:action="@{/logout}" th:method="POST">
-                                <button type="submit" class="a">
+                                <button type="submit" class="button">
                                     Logout
                                 </button>
                             </form>

@@ -10,6 +10,7 @@ import com.project.cocktailapp.repository.UserRepository;
 import com.project.cocktailapp.security.UserDetailsServiceImpl;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -29,14 +30,17 @@ public class UserServiceImpl implements UserService {
     private final Logger LOGGER;
     private final ModelMapper modelmapper;
     private final UserDetailsServiceImpl userDetailsService;
+    private final Logger logger;
 
-    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder, RoleRepository roleRepository, Logger logger, ModelMapper modelmapper, UserDetailsServiceImpl userDetailsService) {
+    @Autowired
+    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder, RoleRepository roleRepository, Logger logger, ModelMapper modelmapper, UserDetailsServiceImpl userDetailsService, Logger logger1) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.roleRepository = roleRepository;
         LOGGER = logger;
         this.modelmapper = modelmapper;
         this.userDetailsService = userDetailsService;
+        this.logger = logger1;
     }
 
     @Override
@@ -73,6 +77,7 @@ public class UserServiceImpl implements UserService {
         userEntity.setRegisterDate(LocalDateTime.now());
 
         userEntity = userRepository.save(userEntity);
+        logger.info(String.format("User %s Registered",userEntity.getUsername()));
 
         UserDetails principal = userDetailsService.loadUserByUsername(userEntity.getUsername());
 
