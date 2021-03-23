@@ -187,9 +187,6 @@
 			display: block;
 			margin: 0 0 2em 0;
 		}
-		.image:hover{
-			transform: translateY(-2px);
-		}
 
 			.image.feature img {
 				display: block;
@@ -659,3 +656,11 @@
 			background-color: white;
 			border-radius: 5px;
 		}
+		.item:hover{
+			transform: translateY(-2px);
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		}
+img {
+	height: 250px;
+	border-radius: 5px;
+}

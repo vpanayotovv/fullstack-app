@@ -1,6 +1,8 @@
 package com.project.cocktailapp.web;
 
+import com.project.cocktailapp.service.CocktailService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -8,8 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/cocktails")
 public class CocktailController {
 
+    private final CocktailService cocktailService;
+
+    public CocktailController(CocktailService cocktailService) {
+        this.cocktailService = cocktailService;
+    }
+
     @GetMapping
-    public String allCocktails(){
+    public String allCocktails(Model model){
+        model.addAttribute("allCocktails",cocktailService.getAllCocktails());
         return "all-cocktails";
     }
 

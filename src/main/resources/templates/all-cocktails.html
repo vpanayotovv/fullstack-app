@@ -1,17 +1,17 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.dropotron.min.js"></script>
     <script src="js/skel.min.js"></script>
     <script src="js/skel-layers.min.js"></script>
     <script src="js/init.js"></script>
     <noscript>
-        <link rel="stylesheet" href="css/skel.css" />
-        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/skel.css"/>
+        <link rel="stylesheet" href="css/style.css"/>
     </noscript>
 </head>
 <body class="no-sidebar">
@@ -65,52 +65,18 @@
 <div class="wrapper style2">
     <section class="container">
         <header class="major">
-            <h2>This is all categories</h2>
+            <h2>This are all categories</h2>
             <h3>Here can find your favorite</h3>
         </header>
-        <div class="row no-collapse-1">
-            <section class="4u">
-                <a href="#" class="image feature"><img
-                        src="https://cdn.whatsgabycooking.com/wp-content/uploads/2018/10/Cholula-_-Summer-Bloody-Mary-9-copy.jpg"
-                        alt=""></a>
-                <span>Vodka</span>
-                <p>Bloody Merry</p>
-            </section>
-            <section class="4u">
-                <a href="#" class="image feature"><img
-                        src="https://253qv1sx4ey389p9wtpp9sj0-wpengine.netdna-ssl.com/wp-content/uploads/2019/09/COM_photocredit_Jens_Johnson_1920x1280.jpg"
-                        alt=""></a>
-                <span>Whisky</span>
-                <p>Old Fashion
-                </p>
-            </section>
-            <section class="4u">
-                <a href="#" class="image feature"><img
-                        src="https://www.thespruceeats.com/thmb/krxJBOwZoRNDliTyyl2SC-25wOE=/735x0/gin-tonic-5a8f334b8e1b6e0036a9631d.jpg"
-                        alt=""></a>
-                <span>Gin</span>
-                <p>Gin & Tonik</p>
-            </section>
-            <section class="4u">
-                <a href="#" class="image feature"><img
-                        src="https://www.liquor.com/thmb/WxxD8oIVqce14UZIRW4F2-vvhpU=/720x720/filters:fill(auto,1)/__opt__aboutcom__coeus__resources__content_migration__liquor__2018__09__04153106__mojito-720x720-recipe-a55b114fc99c4a64b38c9ef6d1660e20.jpg"
-                        alt=""></a>
-                <span>Rum</span>
-                <p>Mojito</p>
-            </section>
-            <section class="4u">
-                <a href="#" class="image feature"><img
-                        src="https://www.liquor.com/thmb/W7rZCGQTShuKl5-loQO5LiZzh9k=/735x0/__opt__aboutcom__coeus__resources__content_migration__liquor__2020__01__02085936__cbd-moscow-mule-720x720-recipe-10d6f1fa45084faf9e542e3fc2119236.jpg"
-                        alt=""></a>
-                <span>Vodka</span>
-                <p>Moscow Mule</p>
-            </section>
-            <section class="4u">
-                <a href="#" class="image feature"><img
-                        src="https://www.seriouseats.com/recipes/images/2015/04/20150323-cocktails-vicky-wasik-margarita-1500x1125.jpg"
-                        alt=""></a>
-                <span>Tequila</span>
-                <p>Margarita</p>
+        <div th:object="${allCocktails}" class="row no-collapse-1">
+            <section th:each="c: ${allCocktails}" class="4u">
+                <div class="item">
+                    <a href="#" class="image feature"><img
+                            th:src="${c.imgUrl}"
+                            alt=""></a>
+                    <span th:text="${c.baseAlcohol.name()}">Vodka</span>
+                    <p th:text="${c.name}">Bloody Merry</p>
+                </div>
             </section>
         </div>
         <button class="btn pull-right button">Explore More</button>

@@ -5,6 +5,7 @@ import com.project.cocktailapp.constraints.Constants;
 import com.project.cocktailapp.model.binding.CocktailBindingModel;
 import com.project.cocktailapp.model.entity.AlcoholEntity;
 import com.project.cocktailapp.model.entity.CocktailEntity;
+import com.project.cocktailapp.model.view.CocktailViewModel;
 import com.project.cocktailapp.repository.AlcoholRepository;
 import com.project.cocktailapp.repository.CocktailRepository;
 import com.project.cocktailapp.util.CustomFileReader;
@@ -15,6 +16,8 @@ import org.springframework.stereotype.Service;
 
 import java.io.FileNotFoundException;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CocktailServiceImpl implements CocktailService {
@@ -39,17 +42,29 @@ public class CocktailServiceImpl implements CocktailService {
     @Override
     public void importCocktails() throws FileNotFoundException {
 
-        String read = String.join("", reader.read(Constants.COCKTAILS_PATH));
-        CocktailBindingModel[] cocktailBindingModels = this.gson.fromJson(read,CocktailBindingModel[].class);
+        if (cocktailRepository.count() == 0) {
 
-        for (CocktailBindingModel cocktailBindingModel : cocktailBindingModels) {
-            CocktailEntity cocktailEntity = modelMapper.map(cocktailBindingModel,CocktailEntity.class);
-            cocktailEntity.setAddedOn(LocalDateTime.now());
-            AlcoholEntity alcoholEntity = alcoholRepository.findByBaseName(cocktailBindingModel.getBaseAlcohol()).orElseThrow(() ->
-                    new IllegalArgumentException("no such alcohol"));
-            cocktailEntity.setBaseAlcohol(alcoholEntity);
-            cocktailRepository.save(cocktailEntity);
-            logger.info(cocktailEntity.getName() + " is saved in DB");
+            String read = String.join("", reader.read(Constants.COCKTAILS_PATH));
+            CocktailBindingModel[] cocktailBindingModels = this.gson.fromJson(read, CocktailBindingModel[].class);
+
+            for (CocktailBindingModel cocktailBindingModel : cocktailBindingModels) {
+                CocktailEntity cocktailEntity = modelMapper.map(cocktailBindingModel, CocktailEntity.class);
+                cocktailEntity.setAddedOn(LocalDateTime.now());
+                AlcoholEntity alcoholEntity = alcoholRepository.findByBaseName(cocktailBindingModel.getBaseAlcohol()).orElseThrow(() ->
+                        new IllegalArgumentException("no such alcohol"));
+                cocktailEntity.setBaseAlcohol(alcoholEntity);
+                cocktailRepository.save(cocktailEntity);
+                logger.info(cocktailEntity.getName() + " is saved in DB");
+            }
         }
+    }
+
+    @Override
+    public List<CocktailViewModel> getAllCocktails() {
+       return cocktailRepository
+               .findAll()
+               .stream()
+               .map(cocktailEntity -> modelMapper.map(cocktailEntity,CocktailViewModel.class))
+               .collect(Collectors.toList());
     }
 }

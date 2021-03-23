@@ -1,8 +1,6 @@
 package com.project.cocktailapp.model.binding;
 
 import com.google.gson.annotations.Expose;
-import com.project.cocktailapp.model.entity.AlcoholEntity;
-import com.project.cocktailapp.model.entity.ProductEntity;
 import com.project.cocktailapp.model.entity.UserEntity;
 import com.project.cocktailapp.model.entity.enums.BaseAlcoholName;
 import com.project.cocktailapp.model.entity.enums.MethodName;
