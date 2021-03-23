@@ -654,3 +654,8 @@
 		#footer a {
 			color: inherit;
 		}
+
+		.item{
+			background-color: white;
+			border-radius: 5px;
+		}

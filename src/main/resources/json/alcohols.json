@@ -1,0 +1,9 @@
+[
+  {"baseName":"Vodka", "description":"sdadsdasdasdasdasdasda", "percentOfAlcohol":35.6},
+  {"baseName":"Gin", "description":"sdadsdasdasdasdasdasda", "percentOfAlcohol":38.3},
+  {"baseName":"Rum", "description":"sdadsdasdasdasdasdasda", "percentOfAlcohol":40},
+  {"baseName":"Liqueur", "description":"sdadsdasdasdasdasdasda", "percentOfAlcohol":20.5},
+  {"baseName":"Whiskey", "description":"sdadsdasdasdasdasdasda", "percentOfAlcohol":45.2},
+  {"baseName":"Tequila", "description":"sdadsdasdasdasdasdasda", "percentOfAlcohol":40.8},
+  {"baseName":"AlcoholFree", "description":"sdadsdasdasdasdasdasda", "percentOfAlcohol":0.0}
+]
