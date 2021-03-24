@@ -4,6 +4,8 @@ import com.google.gson.Gson;
 import com.project.cocktailapp.constraints.Constants;
 import com.project.cocktailapp.model.binding.AlcoholBindingModel;
 import com.project.cocktailapp.model.entity.AlcoholEntity;
+import com.project.cocktailapp.model.entity.enums.BaseAlcoholName;
+import com.project.cocktailapp.model.view.AlcoholViewModel;
 import com.project.cocktailapp.repository.AlcoholRepository;
 import com.project.cocktailapp.util.CustomFileReader;
 import org.modelmapper.ModelMapper;
@@ -43,5 +45,10 @@ public class AlcoholServiceImpl implements AlcoholService {
                 logger.info(alcoholEntity.getBaseName() + " is saved in DB");
             }
         }
+    }
+
+    @Override
+    public AlcoholViewModel getAlcohol() {
+       return alcoholRepository.findByBaseName(BaseAlcoholName.Gin).map(alcoholEntity -> modelMapper.map(alcoholEntity,AlcoholViewModel.class)).orElseThrow(()-> new IllegalArgumentException("no such alcohol"));
     }
 }

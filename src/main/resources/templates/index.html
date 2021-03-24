@@ -30,7 +30,7 @@
                 <li>
                     <a href="/cocktails">Spirits</a>
                     <ul>
-                        <li><a href="#">Gin</a></li>
+                        <li><a href="/alcohols/gin">Gin</a></li>
                         <li><a href="#">Liqueur</a></li>
                         <li><a href="#">Rum</a></li>
                         <li><a href="#">Whiskey</a>
@@ -97,7 +97,9 @@
                 </div>
             </section>
         </div>
-        <button class="btn pull-right button">Explore More</button>
+        <form th:action="@{/cocktails}" th:method="GET">
+            <button type="submit" class="btn pull-right button">Explore More</button>
+        </form>
     </section>
 </div>
 
@@ -125,7 +127,9 @@
                         leo.</p>
                 </section>
             </div>
-            <button type="button" class="btn pull-right button">Explore More</button>
+            <form th:action="@{/cocktails}" th:method="GET">
+                <button type="submit" class="btn pull-right button">Explore More</button>
+            </form>
         </section>
     </div>
 </div>
