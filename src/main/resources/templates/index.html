@@ -39,7 +39,6 @@
                         <li><a href="#">Аlcohol-free</a>
                     </ul>
                 </li>
-                <li sec:authorize="hasRole('ROLE_ADMIN')" ><a href="/cocktails/add">Add Cocktail</a></li>
                 <li>
                     <a href="#">Beer & Wine</a>
                     <ul>
@@ -60,6 +59,17 @@
                             </form>
                         </li>
                     </ul>
+                </li>
+                <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/cocktails/add">Add Cocktail</a></li>
+                <li sec:authorize="hasRole('ROLE_ADMIN')">
+                    <a href="#">Admin Panel</a>
+                    <ul>
+                        <li><a href="#">Role Manager</a></li>
+                        <li><a href="#">Statistics</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/cocktails"><i class="fa fa-search"></i></a>
                 </li>
             </ul>
         </nav>

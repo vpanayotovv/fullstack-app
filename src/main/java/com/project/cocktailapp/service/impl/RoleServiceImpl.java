@@ -1,8 +1,9 @@
-package com.project.cocktailapp.service;
+package com.project.cocktailapp.service.impl;
 
 import com.project.cocktailapp.model.entity.RoleEntity;
 import com.project.cocktailapp.model.entity.enums.RoleName;
 import com.project.cocktailapp.repository.RoleRepository;
+import com.project.cocktailapp.service.RoleService;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

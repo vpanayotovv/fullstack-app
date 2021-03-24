@@ -1,4 +1,4 @@
-package com.project.cocktailapp.service;
+package com.project.cocktailapp.service.impl;
 
 import com.google.gson.Gson;
 import com.project.cocktailapp.constraints.Constants;
@@ -7,6 +7,7 @@ import com.project.cocktailapp.model.entity.AlcoholEntity;
 import com.project.cocktailapp.model.entity.enums.BaseAlcoholName;
 import com.project.cocktailapp.model.view.AlcoholViewModel;
 import com.project.cocktailapp.repository.AlcoholRepository;
+import com.project.cocktailapp.service.AlcoholService;
 import com.project.cocktailapp.util.CustomFileReader;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;

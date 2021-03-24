@@ -1,4 +1,4 @@
-package com.project.cocktailapp.service;
+package com.project.cocktailapp.service.impl;
 
 import com.project.cocktailapp.model.entity.RoleEntity;
 import com.project.cocktailapp.model.entity.UserEntity;
@@ -8,6 +8,7 @@ import com.project.cocktailapp.model.service.UserServiceModel;
 import com.project.cocktailapp.repository.RoleRepository;
 import com.project.cocktailapp.repository.UserRepository;
 import com.project.cocktailapp.security.UserDetailsServiceImpl;
+import com.project.cocktailapp.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
