@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.dropotron.min.js"></script>
+    <script src="/js/skel.min.js"></script>
+    <script src="/js/skel-layers.min.js"></script>
+    <script src="/js/init.js"></script>
+    <link rel="stylesheet" href="/css/skel.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
+</head>
+
+<body class="left-sidebar">
+
+<!-- Header -->
+<div id="header">
+    <div class="container">
+
+        <nav id="nav">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li>
+                    <a href="/cocktails">Spirits</a>
+                    <ul>
+                        <li><a href="#">Gin</a></li>
+                        <li><a href="#">Liqueur</a></li>
+                        <li><a href="#">Rum</a></li>
+                        <li><a href="">Whiskey</a>
+                        <li><a href="">Tequila</a>
+                        <li><a href="">Vodka</a>
+                        <li><a href="">Nonalcohol</a>
+                    </ul>
+                </li>
+                <li><a href="right-sidebar.html">Add Cocktail</a></li>
+                <li><a href="right-sidebar.html">Search Cocktail</a></li>
+                <li>
+                    <a href="">Beer & Wine</a>
+                    <ul>
+                        <li><a href="#">Beer</a></li>
+                        <li><a href="#">Wine</a></li>
+                    </ul>
+                </li>
+                <li><a href="all-cocktails.html">Blog</a></li>
+                <li><a href="#">Profile</a>
+                    <ul>
+                        <li><a href="/users/login">Sing In</a></li>
+                        </li>
+                        <li><a href="/users/register">Register</a></li>
+                    </ul>
+            </ul>
+        </nav>
+
+    </div>
+</div>
+
+<!-- Main -->
+<div id="main" class="wrapper style1">
+    <div th:object="${cocktail}" class="container">
+        <img class="image feature" th:src="${cocktail.imgUrl}"></a>
+        <h2 th:text="${cocktail.name}"></h2>
+        <h3 th:text="${cocktail.baseAlcohol}"></h3>
+    </div>
+    <div th:object="${cocktail}" class="container">
+        <iframe class="video" th:src="'https://www.youtube.com/embed/' + *{videoUrl}"
+                allowfullscreen></iframe>
+    </div>
+
+</div>
+
+</body>
+
+</html>

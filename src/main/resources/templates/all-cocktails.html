@@ -9,6 +9,7 @@
     <script src="js/skel.min.js"></script>
     <script src="js/skel-layers.min.js"></script>
     <script src="js/init.js"></script>
+
     <noscript>
         <link rel="stylesheet" href="css/skel.css"/>
         <link rel="stylesheet" href="css/style.css"/>
@@ -71,8 +72,8 @@
         <div th:object="${allCocktails}" class="row no-collapse-1">
             <section th:each="c: ${allCocktails}" class="4u">
                 <div class="item">
-                    <a href="#" class="image feature"><img
-                            th:src="${c.imgUrl}"
+                    <a th:href="@{/cocktails/{id}(id=${c.id})}" class="image feature">
+                        <img class="img" th:src="${c.imgUrl}"
                             alt=""></a>
                     <span th:text="${c.baseAlcohol.name()}">Vodka</span>
                     <p th:text="${c.name}">Bloody Merry</p>

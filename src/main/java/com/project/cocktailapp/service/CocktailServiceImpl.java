@@ -5,6 +5,7 @@ import com.project.cocktailapp.constraints.Constants;
 import com.project.cocktailapp.model.binding.CocktailBindingModel;
 import com.project.cocktailapp.model.entity.AlcoholEntity;
 import com.project.cocktailapp.model.entity.CocktailEntity;
+import com.project.cocktailapp.model.view.CocktailDetailViewModel;
 import com.project.cocktailapp.model.view.CocktailViewModel;
 import com.project.cocktailapp.repository.AlcoholRepository;
 import com.project.cocktailapp.repository.CocktailRepository;
@@ -66,5 +67,26 @@ public class CocktailServiceImpl implements CocktailService {
                .stream()
                .map(cocktailEntity -> modelMapper.map(cocktailEntity,CocktailViewModel.class))
                .collect(Collectors.toList());
+    }
+
+    @Override
+    public CocktailDetailViewModel findCocktailById(Long id) {
+
+        return cocktailRepository.findById(id)
+                .map(cocktail -> {
+                    CocktailDetailViewModel cocktailDetailViewModel = modelMapper.map(cocktail, CocktailDetailViewModel.class);
+                    cocktailDetailViewModel.setBaseAlcohol(cocktail.getBaseAlcohol().getBaseName().name());
+                    return cocktailDetailViewModel;
+                }).orElseThrow(() -> new IllegalArgumentException("no such cocktail ID"));
+
+    }
+
+    @Override
+    public List<CocktailViewModel> getNewestCocktails() {
+        return cocktailRepository
+                .findNewestCocktails()
+                .stream()
+                .map(cocktailEntity -> modelMapper.map(cocktailEntity,CocktailViewModel.class))
+                .collect(Collectors.toList());
     }
 }
