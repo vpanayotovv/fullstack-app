@@ -4,18 +4,7 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <meta name="description" content=""/>
-    <meta name="keywords" content=""/>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery.dropotron.min.js"></script>
-    <script src="js/skel.min.js"></script>
-    <script src="js/skel-layers.min.js"></script>
-    <script src="js/init.js"></script>
-    <noscript>
-        <link rel="stylesheet" href="css/skel.css"/>
-        <link rel="stylesheet" href="css/style.css"/>
-    </noscript>
+    <th:block th:include="~{fragments/head}" ></th:block>
 </head>
 
 <body class="homepage">
@@ -59,7 +48,7 @@
                 </div>
             </section>
         </div>
-        <form th:action="@{/cocktails}" th:method="GET">
+        <form th:action="@{/cocktails/all}" th:method="GET">
             <button type="submit" class="btn pull-right button">Explore More</button>
         </form>
     </section>
@@ -89,7 +78,7 @@
                         leo.</p>
                 </section>
             </div>
-            <form th:action="@{/cocktails}" th:method="GET">
+            <form th:action="@{/cocktails/all}" th:method="GET">
                 <button type="submit" class="btn pull-right button">Explore More</button>
             </form>
         </section>
@@ -103,13 +92,3 @@
 </body>
 
 </html>
-
-<!--<div th:object="${cocktail}" class="container">
-        <img class="image feature" th:src="${cocktail.imgUrl}"></a>
-        <h2 th:text="${cocktail.name}"></h2>
-        <h3 th:text="${cocktail.baseAlcohol}"></h3>
-    </div>
-    <div th:object="${cocktail}" class="container">
-        <iframe class="video" th:src="'https://www.youtube.com/embed/' + *{videoUrl}"
-                allowfullscreen></iframe>
-    </div>-->

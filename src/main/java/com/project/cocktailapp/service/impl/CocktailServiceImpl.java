@@ -87,6 +87,7 @@ public class CocktailServiceImpl implements CocktailService {
         return cocktailRepository
                 .findNewestCocktails()
                 .stream()
+                .limit(6)
                 .map(cocktailEntity -> modelMapper.map(cocktailEntity,CocktailViewModel.class))
                 .collect(Collectors.toList());
     }
