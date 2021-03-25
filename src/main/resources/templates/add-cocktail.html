@@ -1,65 +1,74 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<meta charset="utf-8">
-		<title>Add Cocktail</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		
-		<!-- MATERIAL DESIGN ICONIC FONT -->
-		<link rel="stylesheet" href="/register-from/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+<head>
+    <meta charset="utf-8">
+    <title>Add Cocktail</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<!-- STYLE CSS -->
-		<link rel="stylesheet" href="/register-from/css/style.css">
-	</head>
+    <!-- MATERIAL DESIGN ICONIC FONT -->
+    <link rel="stylesheet"
+          href="/register-from/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
 
-	<body>
+    <!-- STYLE CSS -->
+    <link rel="stylesheet" href="/register-from/css/style.css">
+</head>
 
-		<div class="wrapper" style="background-image: url('/register-from/images/pic01.jpg');">
-			<div class="inner">
-				<div class="image-holder">
-					<img src="/register-from/images/pic04.jpg" alt="">
-				</div>
-				<form action="">
-					<h3>Add Cocktail</h3>
-					<div class="form-group">
-						<input type="text" placeholder="Name" class="form-control">
-					</div>
-					<div class="form-wrapper">
-						<select name="" id="" class="form-control">
-							<option value="" disabled selected>Base Alcohol</option>
-							<option value="male">Gin</option>
-							<option value="femal">Tequila</option>
-							<option value="other">Rum</option>
-						</select>
-						<i class="zmdi zmdi-account"></i>
-					</div>
-					<div class="form-wrapper">
-						<input type="text" placeholder="Image Url" class="form-control">
-						<i class="zmdi zmdi-email"></i>
-					</div>
-					<div class="form-wrapper">
-						<input type="password" placeholder="Video Url" class="form-control">
-						<i class="zmdi zmdi-lock"></i>
-					</div>
-					<div class="form-wrapper">
-						<select name="" id="method" class="form-control">
-							<option value="" disabled selected>Method</option>
-							<option value="male">Stir</option>
-							<option value="femal">Shake</option>
-							<option value="other">Build</option>
-						</select>
-						<i class="zmdi zmdi-audio"></i>
-					</div>
-					<div class="form-wrapper">
-						<input type="password" placeholder="Ingridiants" class="form-control">
-						<i class="zmdi zmdi-lock"></i>
-					</div>
-					<button>Submit
-						<i class="zmdi zmdi-arrow-right"></i>
-					</button>
-				</form>
-			</div>
-		</div>
-		
-	</body>
+<body>
+
+<div class="wrapper" style="background-image: url('/register-from/images/pic01.jpg');">
+    <div class="inner">
+        <div class="image-holder">
+            <img src="/register-from/images/pic04.jpg" alt="">
+        </div>
+        <form action="">
+            <h3>Add Cocktail</h3>
+            <div class="form-group">
+                <input type="text" placeholder="Name" class="form-control">
+            </div>
+            <div class="form-wrapper">
+                <select name="" id="" class="form-control">
+                    <option value="" disabled selected>Base Alcohol</option>
+                    <option value="male">Gin</option>
+                    <option value="femal">Tequila</option>
+                    <option value="other">Rum</option>
+                </select>
+                <i class="zmdi zmdi-account"></i>
+            </div>
+            <div class="form-wrapper">
+                <input type="text" placeholder="Image Url" class="form-control">
+                <i class="zmdi zmdi-email"></i>
+            </div>
+            <div class="form-wrapper">
+                <input type="password" placeholder="Video Url" class="form-control">
+                <i class="zmdi zmdi-lock"></i>
+            </div>
+            <div class="form-wrapper">
+                <select name="" id="method" class="form-control">
+                    <option value="" disabled selected>Method</option>
+                    <option value="male">Stir</option>
+                    <option value="femal">Shake</option>
+                    <option value="other">Build</option>
+                </select>
+                <i class="zmdi zmdi-audio"></i>
+            </div>
+            <div class="form-wrapper">
+                <label>
+<textarea name="ingredient" rows="7" cols="48"
+          placeholder="Ingredient:
+pattern:
+{ingredient}-{quantity}
+{ingredient}-{quantity}
+{ingredient}-{quantity}
+"></textarea>
+                </label>
+                <i class="zmdi zmdi-lock"></i>
+            </div>
+            <button>Submit
+                <i class="zmdi zmdi-arrow-right"></i>
+            </button>
+        </form>
+    </div>
+</div>
+
+</body>
 </html>
