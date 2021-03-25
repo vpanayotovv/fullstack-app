@@ -2,6 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
     <script src="/js/jquery.min.js"></script>
     <script src="/js/jquery.dropotron.min.js"></script>
     <script src="/js/skel.min.js"></script>
@@ -10,17 +12,21 @@
     <link rel="stylesheet" href="/css/skel.css"/>
     <link rel="stylesheet" href="/css/style.css"/>
 </head>
-<body class="right-sidebar">
+<body class="no-sidebar">
 
 <!-- Header -->
 <div id="header">
     <div class="container">
+
+        <!-- Logo -->
+        <h1><a href="#" id="logo">Gin</a></h1>
+
         <!-- Nav -->
         <nav id="nav">
             <ul>
-                <li><a href="index.html">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li>
-                    <a href="">Spirits</a>
+                    <a href="/cocktails">Spirits</a>
                     <ul>
                         <li><a href="#">Gin</a></li>
                         <li><a href="#">Liqueur</a></li>
@@ -28,11 +34,11 @@
                         <li><a href="">Whiskey</a>
                         <li><a href="">Tequila</a>
                         <li><a href="">Vodka</a>
-                        <li><a href="">Other</a>
+                        <li><a href="">Nonalcohol</a>
                     </ul>
                 </li>
-                <li><a href="details-cocktail.html">Rate Cocktail</a></li>
                 <li><a href="gin.html">Add Cocktail</a></li>
+                <li><a href="gin.html">Search Cocktail</a></li>
                 <li>
                     <a href="">Beer & Wine</a>
                     <ul>
@@ -43,39 +49,36 @@
                 <li><a href="all-cocktails.html">Blog</a></li>
                 <li><a href="#">Profile</a>
                     <ul>
-                        <li><a href="/register-from/login.html">Sing In</a></li>
+                        <li><a href="/users/login">Sing In</a></li>
                         </li>
-                        <li><a href="/register-from/register.html">Register</a></li>
+                        <li><a href="/users/register">Register</a></li>
                     </ul>
             </ul>
         </nav>
+
     </div>
 </div>
 
 <!-- Main -->
-<div id="main" class="wrapper style1">
-    <div class="container">
-        <div class="row">
-
-            <!-- Content -->
-            <div id="content" class="8u skel-cell-important">
-                <section>
-                    <header th:object="${ginAlcohol}" class="major">
-                        <h2 th:text="${ginAlcohol.baseName.name()}" >Gin</h2>
-                        <h3 th:text="${ginAlcohol.percentOfAlcohol}" ></h3>
-                        <span th:text="${ginAlcohol.description}" class="byline"></span>
-                    </header>
-                </section>
-            </div>
-
-            <!-- Sidebar -->
-            <div id="sidebar" class="4u sidebar">
-                <iframe class="video" src="https://www.youtube.com/embed/Q93n3dvaaTI?rel=0" title="YouTube video"
-                        allowfullscreen></iframe>
-            </div>
-
+<div class="wrapper style2">
+    <section th:object="${ginAlcohol}" class="container">
+        <header class="major">
+            <h2 th:text="${ginAlcohol.baseName.name()}">...</h2>
+            <h4 th:text="${ginAlcohol.percentOfAlcohol}">...</h4>
+            <h3 th:text="${ginAlcohol.description}">...</h3>
+        </header>
+        <div th:object="${ginCocktails}" class="row no-collapse-1">
+            <section th:each="c: ${ginCocktails}" class="4u">
+                <div class="item">
+                    <a th:href="@{/cocktails/{id}(id=${c.id})}" class="image feature">
+                        <img class="img" th:src="${c.imgUrl}"
+                             alt=""></a>
+                    <span th:text="${c.baseAlcohol.name()}">Vodka</span>
+                    <p th:text="${c.name}">Bloody Merry</p>
+                </div>
+            </section>
         </div>
-    </div>
+    </section>
 </div>
 
 <!-- Footer -->

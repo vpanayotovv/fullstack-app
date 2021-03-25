@@ -16,4 +16,7 @@ public interface CocktailService {
     CocktailDetailViewModel findCocktailById(Long id);
 
     List<CocktailViewModel> getNewestCocktails();
+
+    List<CocktailViewModel> getCocktailsByAlcoholId(Long id);
+
 }

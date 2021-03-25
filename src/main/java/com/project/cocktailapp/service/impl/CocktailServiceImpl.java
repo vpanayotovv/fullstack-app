@@ -90,4 +90,13 @@ public class CocktailServiceImpl implements CocktailService {
                 .map(cocktailEntity -> modelMapper.map(cocktailEntity,CocktailViewModel.class))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<CocktailViewModel> getCocktailsByAlcoholId(Long id) {
+       return cocktailRepository
+               .findAllByBaseAlcoholId(id)
+               .stream()
+               .map(cocktailEntity -> modelMapper.map(cocktailEntity,CocktailViewModel.class))
+               .collect(Collectors.toList());
+    }
 }

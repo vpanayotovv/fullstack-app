@@ -11,4 +11,7 @@ public interface CocktailRepository extends JpaRepository<CocktailEntity,Long> {
 
     @Query("select c from CocktailEntity c order by c.addedOn desc")
     List<CocktailEntity> findNewestCocktails();
+
+    @Query("select c from CocktailEntity c where c.baseAlcohol.id = :id")
+    List<CocktailEntity> findAllByBaseAlcoholId(Long id);
 }

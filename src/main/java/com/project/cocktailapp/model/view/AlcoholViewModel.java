@@ -10,6 +10,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class AlcoholViewModel {
 
+    private Long id;
+
     private BaseAlcoholName baseName;
 
     private String description;
