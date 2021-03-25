@@ -1,7 +1,11 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
     <script src="/js/jquery.min.js"></script>
     <script src="/js/jquery.dropotron.min.js"></script>
     <script src="/js/skel.min.js"></script>
@@ -12,32 +16,38 @@
         <link rel="stylesheet" href="/css/style.css"/>
     </noscript>
 </head>
-
-<body class="left-sidebar">
+<body class="no-sidebar">
 
 <!-- Header -->
 <div id="header">
     <div class="container">
 
-        <th:block th:include="~{fragments/navbar.html}" ></th:block>
+        <!-- Logo -->
+        <h1><a href="#" id="logo">Spirits & Liqueurs</a></h1>
+
+        <!-- Nav -->
+        <th:block th:include="~{fragments/navbar.html}"></th:block>
 
     </div>
 </div>
 
 <!-- Main -->
-<div id="main" class="wrapper style1">
-    <div th:object="${cocktail}" class="container">
-        <img class="image feature" th:src="${cocktail.imgUrl}"></a>
-        <h2 th:text="${cocktail.name}"></h2>
-        <h3 th:text="${cocktail.baseAlcohol}"></h3>
-    </div>
-    <div th:object="${cocktail}" class="container">
-        <iframe class="video" th:src="'https://www.youtube.com/embed/' + *{videoUrl}"
-                allowfullscreen></iframe>
-    </div>
-
+<div class="wrapper style2">
+    <section class="container">
+        <div th:object="${cocktail}" class="row no-collapse-1">
+            <h2 th:text="${cocktail.name}"></h2>
+            <h3 th:text="${cocktail.baseAlcohol}"></h3>
+            <img class="image feature" th:src="${cocktail.imgUrl}"></a>
+        </div>
+        <div th:object="${cocktail}" class="container">
+            <iframe class="video" th:src="'https://www.youtube.com/embed/' + *{videoUrl}"
+                    allowfullscreen></iframe>
+        </div>
+    </section>
 </div>
 
-</body>
+<!-- Footer -->
+<th:block th:include="~{fragments/footer.html}"></th:block>
 
+</body>
 </html>

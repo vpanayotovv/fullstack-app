@@ -17,7 +17,7 @@ public class CocktailController {
         this.cocktailService = cocktailService;
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public String allCocktails(Model model){
         model.addAttribute("allCocktails",cocktailService.getAllCocktails());
         return "all-cocktails";

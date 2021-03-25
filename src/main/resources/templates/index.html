@@ -97,73 +97,19 @@
 </div>
 
 <!-- Footer -->
-<div id="footer">
-    <div class="container">
 
-        <!-- Lists -->
-        <div class="row">
-            <div class="8u">
-                <section>
-                    <header class="major">
-                        <h3>Cocktail Kingdom</h3>
-                    </header>
-                    <div class="row">
-                        <section class="6u">
-                            <ul class="default">
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">Spirits</a></li>
-                                <li><a href="#">Rate Cocktail</a></li>
-                                <li><a href="#">Add Cocktail</a></li>
-                                <li><a href="#">Beer&Wine</a></li>
-                                <li><a href="#">Blog</a></li>
-                                <li><a href="#">Profile</a></li>
-                            </ul>
-                        </section>
-                        <section class="6u">
-                            <ul class="default">
-                                <li><a href="#">Gin</a></li>
-                                <li><a href="#">Liqueur</a></li>
-                                <li><a href="#">Rum</a></li>
-                                <li><a href="#">Whiskey</a></li>
-                                <li><a href="#">Tequila</a></li>
-                                <li><a href="#">Vodka</a></li>
-                                <li><a href="#">Nonalcohol</a></li>
-                            </ul>
-                        </section>
-                    </div>
-                </section>
-            </div>
-            <div class="4u">
-                <section>
-                    <header class="major">
-                        <h3>Contact Us</h3>
-                    </header>
-                    <ul class="contact">
-                        <li>
-                            <span class="mail">Facebook</span>
-                            <span><a href="#">Cocktail Kingdom</a></span>
-                        </li>
-                        <li>
-                            <span class="mail">Mail</span>
-                            <span><a href="#">cocktail-kingdom@gmail.com</a></span>
-                        </li>
-                        <li>
-                            <span class="phone">Phone</span>
-                            <span>(+359) 878 42 59 80</span>
-                        </li>
-                    </ul>
-                </section>
-            </div>
-        </div>
-
-        <!-- Copyright -->
-        <div class="copyright">
-            ©V. Panayotov 2021. All rights reserved.
-        </div>
-
-    </div>
-</div>
+<th:block th:include="~{fragments/footer.html}" ></th:block>
 
 </body>
 
 </html>
+
+<!--<div th:object="${cocktail}" class="container">
+        <img class="image feature" th:src="${cocktail.imgUrl}"></a>
+        <h2 th:text="${cocktail.name}"></h2>
+        <h3 th:text="${cocktail.baseAlcohol}"></h3>
+    </div>
+    <div th:object="${cocktail}" class="container">
+        <iframe class="video" th:src="'https://www.youtube.com/embed/' + *{videoUrl}"
+                allowfullscreen></iframe>
+    </div>-->
