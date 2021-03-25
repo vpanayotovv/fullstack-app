@@ -24,55 +24,7 @@
 <div id="header">
     <div class="container">
         <!-- Nav -->
-        <nav id="nav">
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li>
-                    <a href="/cocktails">Spirits</a>
-                    <ul>
-                        <li><a href="/alcohols/gin">Gin</a></li>
-                        <li><a href="#">Liqueur</a></li>
-                        <li><a href="#">Rum</a></li>
-                        <li><a href="#">Whiskey</a>
-                        <li><a href="#">Tequila</a>
-                        <li><a href="#">Vodka</a>
-                        <li><a href="#">Аlcohol-free</a>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Beer & Wine</a>
-                    <ul>
-                        <li><a href="#">Beer</a></li>
-                        <li><a href="#">Wine</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">News</a></li>
-                <li><a>Profile</a>
-                    <ul>
-                        <li><a sec:authorize="!isAuthenticated()" href="/users/login">Sing In</a></li>
-                        <li><a sec:authorize="!isAuthenticated()" href="/users/register">Register</a></li>
-                        <li>
-                            <form sec:authorize="isAuthenticated()" th:action="@{/logout}" th:method="POST">
-                                <button type="submit" class="button">
-                                    Logout
-                                </button>
-                            </form>
-                        </li>
-                    </ul>
-                </li>
-                <li sec:authorize="hasRole('ROLE_BARTENDER')"><a href="/cocktails/add">Add Cocktail</a></li>
-                <li sec:authorize="hasRole('ROLE_ADMIN')">
-                    <a href="#">Admin Panel</a>
-                    <ul>
-                        <li><a href="#">Role Manager</a></li>
-                        <li><a href="#">Statistics</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="/cocktails"><i class="fa fa-search"></i></a>
-                </li>
-            </ul>
-        </nav>
+        <th:block th:include="~{fragments/navbar.html}" ></th:block>
 
 
         <!-- Banner -->

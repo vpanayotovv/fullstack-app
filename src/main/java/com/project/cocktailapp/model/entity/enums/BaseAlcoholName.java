@@ -2,7 +2,7 @@ package com.project.cocktailapp.model.entity.enums;
 
 public enum BaseAlcoholName {
     Gin,
-    Liqueur,
+    AlcoholFree,
     Other,
     Rum,
     Tequila,

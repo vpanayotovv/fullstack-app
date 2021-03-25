@@ -49,7 +49,7 @@ public class AlcoholServiceImpl implements AlcoholService {
     }
 
     @Override
-    public AlcoholViewModel getAlcohol() {
-       return alcoholRepository.findByBaseName(BaseAlcoholName.Gin).map(alcoholEntity -> modelMapper.map(alcoholEntity,AlcoholViewModel.class)).orElseThrow(()-> new IllegalArgumentException("no such alcohol"));
+    public AlcoholViewModel getAlcoholByName(BaseAlcoholName baseAlcoholName) {
+       return alcoholRepository.findByBaseName(baseAlcoholName).map(alcoholEntity -> modelMapper.map(alcoholEntity,AlcoholViewModel.class)).orElseThrow(()-> new IllegalArgumentException("no such alcohol"));
     }
 }

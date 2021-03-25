@@ -1,0 +1,55 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<th:block>
+    <nav id="nav">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li>
+                <a href="/cocktails">Spirits</a>
+                <ul>
+                    <li><a href="/alcohols/gin">Gin</a></li>
+                    <li><a href="/alcohols/rum">Rum</a></li>
+                    <li><a href="/alcohols/whiskey">Whiskey</a>
+                    <li><a href="/alcohols/tequila">Tequila</a>
+                    <li><a href="/alcohols/vodka">Vodka</a>
+                    <li><a href="/alcohols/other">Other</a></li>
+                    <li><a href="/alcohols/alcohol-free">Аlcohol-free</a>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Beer & Wine</a>
+                <ul>
+                    <li><a href="#">Beer</a></li>
+                    <li><a href="#">Wine</a></li>
+                </ul>
+            </li>
+            <li><a href="#">News</a></li>
+            <li><a>Profile</a>
+                <ul>
+                    <li><a sec:authorize="!isAuthenticated()" href="/users/login">Sing In</a></li>
+                    <li><a sec:authorize="!isAuthenticated()" href="/users/register">Register</a></li>
+                    <li>
+                        <form sec:authorize="isAuthenticated()" th:action="@{/logout}" th:method="POST">
+                            <button type="submit" class="button">
+                                Logout
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </li>
+            <li sec:authorize="hasRole('ROLE_BARTENDER')"><a href="/cocktails/add">Add Cocktail</a></li>
+            <li sec:authorize="hasRole('ROLE_ADMIN')">
+                <a href="#">Admin Panel</a>
+                <ul>
+                    <li><a href="#">Role Manager</a></li>
+                    <li><a href="#">Statistics</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="/cocktails"><i class="fa fa-search"></i></a>
+            </li>
+        </ul>
+    </nav>
+</th:block>

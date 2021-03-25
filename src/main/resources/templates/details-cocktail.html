@@ -7,8 +7,10 @@
     <script src="/js/skel.min.js"></script>
     <script src="/js/skel-layers.min.js"></script>
     <script src="/js/init.js"></script>
-    <link rel="stylesheet" href="/css/skel.css"/>
-    <link rel="stylesheet" href="/css/style.css"/>
+    <noscript>
+        <link rel="stylesheet" href="/css/skel.css"/>
+        <link rel="stylesheet" href="/css/style.css"/>
+    </noscript>
 </head>
 
 <body class="left-sidebar">
@@ -17,39 +19,7 @@
 <div id="header">
     <div class="container">
 
-        <nav id="nav">
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li>
-                    <a href="/cocktails">Spirits</a>
-                    <ul>
-                        <li><a href="#">Gin</a></li>
-                        <li><a href="#">Liqueur</a></li>
-                        <li><a href="#">Rum</a></li>
-                        <li><a href="">Whiskey</a>
-                        <li><a href="">Tequila</a>
-                        <li><a href="">Vodka</a>
-                        <li><a href="">Nonalcohol</a>
-                    </ul>
-                </li>
-                <li><a href="gin.html">Add Cocktail</a></li>
-                <li><a href="gin.html">Search Cocktail</a></li>
-                <li>
-                    <a href="">Beer & Wine</a>
-                    <ul>
-                        <li><a href="#">Beer</a></li>
-                        <li><a href="#">Wine</a></li>
-                    </ul>
-                </li>
-                <li><a href="all-cocktails.html">Blog</a></li>
-                <li><a href="#">Profile</a>
-                    <ul>
-                        <li><a href="/users/login">Sing In</a></li>
-                        </li>
-                        <li><a href="/users/register">Register</a></li>
-                    </ul>
-            </ul>
-        </nav>
+        <th:block th:include="~{fragments/navbar.html}" ></th:block>
 
     </div>
 </div>
