@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <th:block th:include="~{fragments/head}"></th:block>
+</head>
+<div id="header">
+    <div class="container">
+
+        <!-- Logo -->
+        <h1><a href="#" id="logo">Spirits & Liqueurs</a></h1>
+
+        <!-- Nav -->
+        <th:block th:include="~{fragments/navbar.html}" ></th:block>
+
+    </div>
+</div>
+
+<!-- Main -->
+<div class="wrapper style2">
+    <section class="container">
+        <header class="major">
+            <h2>Opss....</h2>
+            <h3>Something went wrong! We'll fix it soon!</h3>
+            <img class="img" src="/images/ops.jpg">
+            <h2 th:text="${status}" ></h2>
+        </header>
+        <form th:action="@{/}" th:method="GET">
+            <button type="submit" class="btn pull-right button">Go To Home</button>
+        </form>
+    </section>
+</div>
+
+<th:block th:include="~{fragments/footer.html}"></th:block>

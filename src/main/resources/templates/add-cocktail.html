@@ -20,46 +20,51 @@
         <div class="image-holder">
             <img src="/register-from/images/pic04.jpg" alt="">
         </div>
-        <form action="">
+        <form th:object="${cocktailAddBindingModel}"
+              th:action="@{/cocktails/add}" method="POST">
             <h3>Add Cocktail</h3>
+            <h4 class="invalid-input" th:if="${cocktailExistsError}">Cocktail already exist</h4>
             <div class="form-group">
-                <input type="text" placeholder="Name" class="form-control">
+                <input th:field="*{name}" th:value="*{name}" type="text" placeholder="Name" class="form-control">
+                <small th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></small>
             </div>
             <div class="form-wrapper">
-                <select name="" id="" class="form-control">
-                    <option value="" disabled selected>Base Alcohol</option>
-                    <option value="male">Gin</option>
-                    <option value="femal">Tequila</option>
-                    <option value="other">Rum</option>
+                <small th:if="${#fields.hasErrors('baseAlcohol')}" th:errors="*{baseAlcohol}" class="text-danger"></small>
+                <select th:field="*{baseAlcohol}" name="baseAlcohol" class="form-control">
+                    <option th:each="a : ${T(com.project.cocktailapp.model.entity.enums.BaseAlcoholName).values()}"
+                            th:value="${a}"
+                            th:text="${a}">
                 </select>
-                <i class="zmdi zmdi-account"></i>
+                <i class="zmdi zmdi-caret-down"></i>
             </div>
             <div class="form-wrapper">
-                <input type="text" placeholder="Image Url" class="form-control">
-                <i class="zmdi zmdi-email"></i>
+                <small th:if="${#fields.hasErrors('imgUrl')}" th:errors="*{imgUrl}" class="text-danger"></small>
+                <input th:field="*{imgUrl}" th:value="*{imgUrl}" type="text" placeholder="Image Url" class="form-control">
+                <i class="zmdi zmdi-image"></i>
             </div>
             <div class="form-wrapper">
-                <input type="password" placeholder="Video Url" class="form-control">
-                <i class="zmdi zmdi-lock"></i>
+                <small th:if="${#fields.hasErrors('videoUrl')}" th:errors="*{videoUrl}" class="text-danger"></small>
+                <input th:field="*{videoUrl}" th:value="*{videoUrl}" type="text" placeholder="Video ID" class="form-control">
+                <i class="zmdi zmdi-videocam"></i>
             </div>
             <div class="form-wrapper">
-                <select name="" id="method" class="form-control">
-                    <option value="" disabled selected>Method</option>
-                    <option value="male">Stir</option>
-                    <option value="femal">Shake</option>
-                    <option value="other">Build</option>
+                <select th:field="*{method}" name="method" id="method" class="form-control">
+                    <option th:each="m : ${T(com.project.cocktailapp.model.entity.enums.MethodName).values()}"
+                            th:value="${m}"
+                            th:text="${#strings.capitalize(#strings.toLowerCase(m))}">
                 </select>
                 <i class="zmdi zmdi-audio"></i>
             </div>
             <div class="form-wrapper">
                 <label>
-<textarea name="ingredient" rows="7" cols="48"
-          placeholder="Ingredient:
-pattern:
-{ingredient}-{quantity}
-{ingredient}-{quantity}
-{ingredient}-{quantity}
-"></textarea>
+<textarea th:field="*{products}" name="products" rows="7" cols="48"
+          placeholder="Pattern:
+ingredient-quantity
+ingredient-quantity
+ingredient-quantity
+ingredient-quantity
+ingredient-quantity
+"></textarea><small th:if="${#fields.hasErrors('products')}" th:errors="*{products}" class="text-danger"></small>
                 </label>
                 <i class="zmdi zmdi-lock"></i>
             </div>

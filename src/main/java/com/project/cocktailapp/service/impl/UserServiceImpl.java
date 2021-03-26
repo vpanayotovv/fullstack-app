@@ -1,5 +1,6 @@
 package com.project.cocktailapp.service.impl;
 
+import com.project.cocktailapp.exception.EntityNotFoundException;
 import com.project.cocktailapp.model.entity.RoleEntity;
 import com.project.cocktailapp.model.entity.UserEntity;
 import com.project.cocktailapp.model.entity.enums.Gender;
@@ -60,6 +61,20 @@ public class UserServiceImpl implements UserService {
             admin.setRoles(List.of(adminRole));
             userRepository.save(admin);
             LOGGER.info("Admin Added");
+
+            UserEntity bartender = new UserEntity();
+            RoleEntity bartenderRole = roleRepository.findById((long) 2).get();
+            bartender.setUsername("gosho");
+            bartender.setFirstName("goshokata");
+            bartender.setLastName("goshev");
+            bartender.setPassword(passwordEncoder.encode("1234"));
+            bartender.setEmail("goshko@gmail.com");
+            bartender.setRegisterDate(LocalDateTime.now());
+            bartender.setImgUrl("https:gosho-pick.com");
+            bartender.setGender(Gender.MALE);
+            bartender.setRoles(List.of(bartenderRole));
+            userRepository.save(bartender);
+            LOGGER.info("Bartender Added");
         }
     }
 
@@ -73,7 +88,8 @@ public class UserServiceImpl implements UserService {
         UserEntity userEntity = modelmapper.map(userServiceModel,UserEntity.class);
         userEntity.setPassword(passwordEncoder.encode(userServiceModel.getPassword()));
 
-        RoleEntity roleEntity = roleRepository.findByRole(RoleName.USER).orElseThrow(() -> new IllegalArgumentException("no such role"));
+        RoleEntity roleEntity = roleRepository.findByRole(RoleName.USER)
+                .orElseThrow(() -> new EntityNotFoundException("no such role"));
         userEntity.setRoles(List.of(roleEntity));
         userEntity.setRegisterDate(LocalDateTime.now());
 
@@ -89,5 +105,10 @@ public class UserServiceImpl implements UserService {
         );
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
+    }
+
+    @Override
+    public UserEntity getUserByUsername(String username) {
+       return userRepository.findByUsername(username).orElseThrow(()-> new IllegalArgumentException("no such user"));
     }
 }

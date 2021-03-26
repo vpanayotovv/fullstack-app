@@ -1,37 +1,41 @@
 package com.project.cocktailapp.model.binding;
 
-import com.google.gson.annotations.Expose;
 import com.project.cocktailapp.model.entity.enums.BaseAlcoholName;
 import com.project.cocktailapp.model.entity.enums.MethodName;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import java.util.List;
+import org.hibernate.validator.constraints.URL;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
 @NoArgsConstructor
-public class CocktailBindingModel {
+public class CocktailAddBindingModel {
 
-    @Expose
+    @NotBlank
+    @NotNull
     private String name;
 
-    @Expose
+    @NotNull
     private BaseAlcoholName baseAlcohol;
 
-    @Expose
+    @NotBlank
+    @URL(message = "enter valid url")
     private String imgUrl;
 
-    @Expose
+    @NotBlank
     private String videoUrl;
 
-    @Expose
-    private List<ProductBindingModel> products;
+    @NotBlank
+//    @Pattern(regexp = "[a-zA-Z ]+-[0-9]+",message = "Follow the pattern")
+    private String products;
 
-    @Expose
+    @NotNull
     private MethodName method;
 
-    @Expose
     private String username;
 
 }

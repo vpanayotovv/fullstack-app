@@ -2,6 +2,7 @@ package com.project.cocktailapp.service.impl;
 
 import com.google.gson.Gson;
 import com.project.cocktailapp.constraints.Constants;
+import com.project.cocktailapp.exception.EntityNotFoundException;
 import com.project.cocktailapp.model.binding.AlcoholBindingModel;
 import com.project.cocktailapp.model.entity.AlcoholEntity;
 import com.project.cocktailapp.model.entity.enums.BaseAlcoholName;
@@ -50,6 +51,6 @@ public class AlcoholServiceImpl implements AlcoholService {
 
     @Override
     public AlcoholViewModel getAlcoholByName(BaseAlcoholName baseAlcoholName) {
-       return alcoholRepository.findByBaseName(baseAlcoholName).map(alcoholEntity -> modelMapper.map(alcoholEntity,AlcoholViewModel.class)).orElseThrow(()-> new IllegalArgumentException("no such alcohol"));
+       return alcoholRepository.findByBaseName(baseAlcoholName).map(alcoholEntity -> modelMapper.map(alcoholEntity,AlcoholViewModel.class)).orElseThrow(()-> new EntityNotFoundException("no such alcohol"));
     }
 }

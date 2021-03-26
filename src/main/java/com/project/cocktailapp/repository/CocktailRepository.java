@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface CocktailRepository extends JpaRepository<CocktailEntity,Long> {
@@ -14,4 +15,6 @@ public interface CocktailRepository extends JpaRepository<CocktailEntity,Long> {
 
     @Query("select c from CocktailEntity c where c.baseAlcohol.id = :id")
     List<CocktailEntity> findAllByBaseAlcoholId(Long id);
+
+    Optional<CocktailEntity> findByNameIgnoreCase(String name);
 }
