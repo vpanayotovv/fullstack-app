@@ -11,6 +11,7 @@ import com.project.cocktailapp.model.entity.ProductEntity;
 import com.project.cocktailapp.model.entity.UserEntity;
 import com.project.cocktailapp.model.view.CocktailDetailViewModel;
 import com.project.cocktailapp.model.view.CocktailViewModel;
+import com.project.cocktailapp.model.view.ProductViewModel;
 import com.project.cocktailapp.repository.AlcoholRepository;
 import com.project.cocktailapp.repository.CocktailRepository;
 import com.project.cocktailapp.service.CocktailService;
@@ -62,7 +63,7 @@ public class CocktailServiceImpl implements CocktailService {
                 CocktailEntity cocktailEntity = modelMapper.map(cocktailBindingModel, CocktailEntity.class);
                 cocktailEntity.setAddedOn(LocalDateTime.now());
                 AlcoholEntity alcoholEntity = alcoholRepository.findByBaseName(cocktailBindingModel.getBaseAlcohol()).orElseThrow(() ->
-                        new IllegalArgumentException("no such alcohol"));
+                        new EntityNotFoundException("no such alcohol"));
                 cocktailEntity.setBaseAlcohol(alcoholEntity);
                 cocktailRepository.save(cocktailEntity);
                 logger.info(cocktailEntity.getName() + " is saved in DB");
@@ -86,8 +87,13 @@ public class CocktailServiceImpl implements CocktailService {
                 .map(cocktail -> {
                     CocktailDetailViewModel cocktailDetailViewModel = modelMapper.map(cocktail, CocktailDetailViewModel.class);
                     cocktailDetailViewModel.setBaseAlcohol(cocktail.getBaseAlcohol().getBaseName().name());
+                    cocktailDetailViewModel.setProducts(cocktail
+                            .getProducts()
+                            .stream()
+                            .map(product -> modelMapper
+                                    .map(product, ProductViewModel.class)).collect(Collectors.toSet()));
                     return cocktailDetailViewModel;
-                }).orElseThrow(() -> new IllegalArgumentException("no such cocktail ID"));
+                }).orElseThrow(() -> new EntityNotFoundException("no such cocktail ID"));
 
     }
 

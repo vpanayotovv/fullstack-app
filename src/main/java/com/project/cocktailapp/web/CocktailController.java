@@ -1,6 +1,7 @@
 package com.project.cocktailapp.web;
 
 import com.project.cocktailapp.model.binding.CocktailAddBindingModel;
+import com.project.cocktailapp.model.view.ProductViewModel;
 import com.project.cocktailapp.service.CocktailService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.security.Principal;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/cocktails")
@@ -35,8 +37,8 @@ public class CocktailController {
 
     @GetMapping("/{id}")
     public String profile(@PathVariable Long id, Model model){
-
         model.addAttribute("cocktail", cocktailService.findCocktailById(id));
+        Set<ProductViewModel> products = cocktailService.findCocktailById(id).getProducts();
         return "details-cocktail";
     }
 

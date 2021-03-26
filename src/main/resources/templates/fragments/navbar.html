@@ -26,6 +26,7 @@
                 </ul>
             </li>
             <li><a href="#">News</a></li>
+            <li sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_BARTENDER')"><a href="/cocktails/add">Add Cocktail</a></li>
             <li><a>Profile</a>
                 <ul>
                     <li><a sec:authorize="!isAuthenticated()" href="/users/login">Sing In</a></li>
@@ -39,7 +40,6 @@
                     </li>
                 </ul>
             </li>
-            <li sec:authorize="hasRole('ROLE_BARTENDER')"><a href="/cocktails/add">Add Cocktail</a></li>
             <li sec:authorize="hasRole('ROLE_ADMIN')">
                 <a href="#">Admin Panel</a>
                 <ul>

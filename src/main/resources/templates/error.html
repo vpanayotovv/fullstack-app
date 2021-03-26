@@ -25,7 +25,7 @@
             <h2>Opss....</h2>
             <h3>Something went wrong! We'll fix it soon!</h3>
             <img class="img" src="/images/ops.jpg">
-            <h2 th:text="${status}" ></h2>
+            <h2 sec:authorize="hasRole('ROLE_ADMIN')" th:text="${message}" ></h2>
         </header>
         <form th:action="@{/}" th:method="GET">
             <button type="submit" class="btn pull-right button">Go To Home</button>

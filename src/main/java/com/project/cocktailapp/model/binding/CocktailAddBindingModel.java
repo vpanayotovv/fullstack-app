@@ -9,6 +9,7 @@ import org.hibernate.validator.constraints.URL;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @Getter
 @Setter
@@ -30,7 +31,7 @@ public class CocktailAddBindingModel {
     private String videoUrl;
 
     @NotBlank
-//    @Pattern(regexp = "[a-zA-Z ]+-[0-9]+",message = "Follow the pattern")
+    @Pattern(regexp = "[a-zA-Z ]+-[0-9]+",message = "Follow the pattern")
     private String products;
 
     @NotNull

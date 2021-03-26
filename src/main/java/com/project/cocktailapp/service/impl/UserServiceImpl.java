@@ -1,6 +1,5 @@
 package com.project.cocktailapp.service.impl;
 
-import com.project.cocktailapp.exception.EntityNotFoundException;
 import com.project.cocktailapp.model.entity.RoleEntity;
 import com.project.cocktailapp.model.entity.UserEntity;
 import com.project.cocktailapp.model.entity.enums.Gender;
@@ -88,8 +87,7 @@ public class UserServiceImpl implements UserService {
         UserEntity userEntity = modelmapper.map(userServiceModel,UserEntity.class);
         userEntity.setPassword(passwordEncoder.encode(userServiceModel.getPassword()));
 
-        RoleEntity roleEntity = roleRepository.findByRole(RoleName.USER)
-                .orElseThrow(() -> new EntityNotFoundException("no such role"));
+        RoleEntity roleEntity = roleRepository.findByRole(RoleName.USER).orElseThrow(() -> new IllegalArgumentException("no such role"));
         userEntity.setRoles(List.of(roleEntity));
         userEntity.setRegisterDate(LocalDateTime.now());
 
