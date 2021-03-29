@@ -1,5 +1,6 @@
 package com.project.cocktailapp.service.impl;
 
+import com.project.cocktailapp.exception.EntityNotFoundException;
 import com.project.cocktailapp.model.entity.RoleEntity;
 import com.project.cocktailapp.model.entity.UserEntity;
 import com.project.cocktailapp.model.entity.enums.Gender;
@@ -108,5 +109,20 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserEntity getUserByUsername(String username) {
        return userRepository.findByUsername(username).orElseThrow(()-> new IllegalArgumentException("no such user"));
+    }
+
+    @Override
+    public List<String> getAllUsers() {
+        return userRepository.finAllByUsername();
+    }
+
+    @Override
+    public void changeRole(String username, RoleName roleName) {
+        UserEntity userEntity = userRepository.findByUsername(username).orElseThrow(() -> new EntityNotFoundException("no such user"));
+        RoleEntity roleEntity = roleRepository.findByRole(roleName).orElseThrow(() -> new EntityNotFoundException("no such role"));
+        if (!userEntity.getRoles().contains(roleEntity)){
+            userEntity.getRoles().add(roleEntity);
+            userRepository.saveAndFlush(userEntity);
+        }
     }
 }
