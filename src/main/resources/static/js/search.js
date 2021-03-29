@@ -1,5 +1,7 @@
 const allCocktails = document.getElementById('albumsList')
 const searchBar = document.getElementById('searchInput')
+const searchBtn = document.getElementById('searchBtn')
+const h2 = document.getElementById('h2')
 
 const cocktailList = [];
 
@@ -11,15 +13,22 @@ then(data => {
     }
 })
 
-searchBar.addEventListener('keyup', (e) => {
+searchBtn.addEventListener('click', (e) => {
     const searchingChars = searchBar.value.toLowerCase();
     let filterCocktails = cocktailList.filter(cocktail => {
         return cocktail.name.toLowerCase().includes(searchingChars);
     });
-    displayAlbums(filterCocktails)
+
+    filterCocktails.length ? displayAlbums(filterCocktails) : displayNoCocktailFound()
 })
 
+const displayNoCocktailFound = (cocktails) => {
+    h2.innerText = 'No such Cocktails.Try again.'
+    allCocktails.innerText = ''
+}
+
 const displayAlbums = (cocktails) => {
+    h2.innerText = 'Here can search.'
     allCocktails.innerHTML = cocktails
         .map((c) => {
             return `<div class="row no-collapse-1">
