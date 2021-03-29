@@ -667,3 +667,8 @@ input[type="button"].small,
     height: 300px;
     border-radius: 5px;
 }
+
+.search{
+    display: flex;
+    margin-bottom: 2em;
+}

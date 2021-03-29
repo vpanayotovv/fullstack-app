@@ -12,7 +12,7 @@
     <div class="container">
 
         <!-- Logo -->
-        <h1><a href="#" id="logo">Spirits & Liqueurs</a></h1>
+        <h1><a href="#" id="logo">Find your cocktail</a></h1>
 
         <!-- Nav -->
         <th:block th:include="~{fragments/navbar.html}"></th:block>
@@ -24,9 +24,15 @@
 <div class="wrapper style2">
     <section class="container">
         <header class="major">
-            <h2>This are all cocktails</h2>
-            <h3>Here can find your favorite</h3>
+            <h2>Here can search.</h2>
         </header>
+        <div class="search">
+            <input id="searchInput" type="text" placeholder="Search by name or alcohol...">
+            <button type="button" class="btn pull-right button">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+        <div id="albumsList">
             <div th:object="${allCocktails}" class="row no-collapse-1">
                 <section th:each="c: ${allCocktails}" class="4u">
                     <div class="item">
@@ -38,11 +44,12 @@
                     </div>
                 </section>
             </div>
+        </div>
     </section>
 </div>
 
 <!-- Footer -->
 <th:block th:include="~{fragments/footer.html}"></th:block>
-
+<script th:src="@{js/search.js}"></script>
 </body>
 </html>

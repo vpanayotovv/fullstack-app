@@ -18,13 +18,6 @@
                     <li><a href="/alcohols/alcohol-free">Аlcohol-free</a>
                 </ul>
             </li>
-            <li>
-                <a href="#">Beer & Wine</a>
-                <ul>
-                    <li><a href="#">Beer</a></li>
-                    <li><a href="#">Wine</a></li>
-                </ul>
-            </li>
             <li><a href="#">News</a></li>
             <li sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_BARTENDER')"><a href="/cocktails/add">Add Cocktail</a></li>
             <li><a href="#" >Profile</a>
@@ -48,7 +41,7 @@
                 </ul>
             </li>
             <li>
-                <a href="/cocktails"><i class="fa fa-search"></i></a>
+                <a href="/search"><i class="fa fa-search"></i></a>
             </li>
         </ul>
     </nav>
