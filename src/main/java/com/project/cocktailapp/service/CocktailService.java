@@ -2,6 +2,7 @@ package com.project.cocktailapp.service;
 
 import com.project.cocktailapp.model.binding.CocktailAddBindingModel;
 import com.project.cocktailapp.model.binding.CocktailBindingModel;
+import com.project.cocktailapp.model.entity.CocktailEntity;
 import com.project.cocktailapp.model.view.CocktailDetailViewModel;
 import com.project.cocktailapp.model.view.CocktailViewModel;
 import org.springframework.stereotype.Service;
@@ -24,4 +25,6 @@ public interface CocktailService {
     boolean cocktailsExist(String name);
 
     void addCocktail(CocktailAddBindingModel cocktailAddBindingModel);
+
+    CocktailEntity getById(Long id);
 }

@@ -22,11 +22,9 @@ import java.util.Set;
 public class CocktailController {
 
     private final CocktailService cocktailService;
-    private final ModelMapper modelMapper;
 
-    public CocktailController(CocktailService cocktailService, ModelMapper modelMapper) {
+    public CocktailController(CocktailService cocktailService) {
         this.cocktailService = cocktailService;
-        this.modelMapper = modelMapper;
     }
 
     @GetMapping("/all")
@@ -36,9 +34,8 @@ public class CocktailController {
     }
 
     @GetMapping("/{id}")
-    public String profile(@PathVariable Long id, Model model){
+    public String details(@PathVariable Long id, Model model){
         model.addAttribute("cocktail", cocktailService.findCocktailById(id));
-        Set<ProductViewModel> products = cocktailService.findCocktailById(id).getProducts();
         return "details-cocktail";
     }
 

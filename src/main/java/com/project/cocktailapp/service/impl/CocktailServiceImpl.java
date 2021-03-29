@@ -144,4 +144,9 @@ public class CocktailServiceImpl implements CocktailService {
 
         cocktailRepository.save(cocktailEntity);
     }
+
+    @Override
+    public CocktailEntity getById(Long id) {
+        return cocktailRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("no such cocktail"));
+    }
 }
