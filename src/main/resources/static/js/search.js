@@ -36,9 +36,9 @@ const displayAlbums = (cocktails) => {
                             <div class="item">
                                 <a href="/cocktails/${c.id}" class="image feature">
                                     <img class="img" src="${c.imgUrl}"
-                                        alt=""></a>
+                                        alt="imgUrl"></a>
                                 <span>${c.baseAlcohol}</span>
-                                <p>${c.name}"</p>
+                                <p>${c.name}</p>
                             </div>
                         </section>
                     </div>`
