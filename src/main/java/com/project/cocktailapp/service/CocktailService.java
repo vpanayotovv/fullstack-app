@@ -27,4 +27,6 @@ public interface CocktailService {
     void addCocktail(CocktailAddBindingModel cocktailAddBindingModel);
 
     CocktailEntity getById(Long id);
+
+    List<CocktailViewModel> getMostViewedCocktails();
 }

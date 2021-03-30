@@ -17,6 +17,7 @@ public class HomeController {
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("newestCocktails", cocktailService.getNewestCocktails());
+        model.addAttribute("mostViewedCocktails", cocktailService.getMostViewedCocktails());
         return "index";
     }
 }

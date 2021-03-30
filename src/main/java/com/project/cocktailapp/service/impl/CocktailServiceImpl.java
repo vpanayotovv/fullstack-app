@@ -14,6 +14,7 @@ import com.project.cocktailapp.model.view.CocktailViewModel;
 import com.project.cocktailapp.model.view.ProductViewModel;
 import com.project.cocktailapp.repository.AlcoholRepository;
 import com.project.cocktailapp.repository.CocktailRepository;
+import com.project.cocktailapp.repository.LogDetailsRepository;
 import com.project.cocktailapp.service.CocktailService;
 import com.project.cocktailapp.service.UserService;
 import com.project.cocktailapp.util.CustomFileReader;
@@ -25,6 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.io.FileNotFoundException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -39,9 +41,10 @@ public class CocktailServiceImpl implements CocktailService {
     private final Logger logger;
     private final AlcoholRepository alcoholRepository;
     private final UserService userService;
+    private final LogDetailsRepository logDetailsRepository;
 
     @Autowired
-    public CocktailServiceImpl(CocktailRepository cocktailRepository, ModelMapper modelMapper, Gson gson, CustomFileReader reader, Logger logger, AlcoholRepository alcoholRepository, UserService userService) {
+    public CocktailServiceImpl(CocktailRepository cocktailRepository, ModelMapper modelMapper, Gson gson, CustomFileReader reader, Logger logger, AlcoholRepository alcoholRepository, UserService userService, LogDetailsRepository logDetailsRepository) {
         this.cocktailRepository = cocktailRepository;
         this.modelMapper = modelMapper;
         this.gson = gson;
@@ -49,6 +52,7 @@ public class CocktailServiceImpl implements CocktailService {
         this.logger = logger;
         this.alcoholRepository = alcoholRepository;
         this.userService = userService;
+        this.logDetailsRepository = logDetailsRepository;
     }
 
     @Override
@@ -148,5 +152,19 @@ public class CocktailServiceImpl implements CocktailService {
     @Override
     public CocktailEntity getById(Long id) {
         return cocktailRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("no such cocktail"));
+    }
+
+    public List<CocktailViewModel> getMostViewedCocktails(){
+
+        List<Integer> mostViewed = logDetailsRepository.findMostViewed();
+        List<CocktailViewModel> cocktailViewModels = new ArrayList<>();
+
+        for (Integer cocktail : mostViewed) {
+            CocktailEntity cocktailEntity = cocktailRepository.findById( (long) cocktail).orElseThrow(() ->  new EntityNotFoundException("no such cocktail"));
+            CocktailViewModel mapped = modelMapper.map(cocktailEntity, CocktailViewModel.class);
+            cocktailViewModels.add(mapped);
+        }
+
+        return cocktailViewModels;
     }
 }

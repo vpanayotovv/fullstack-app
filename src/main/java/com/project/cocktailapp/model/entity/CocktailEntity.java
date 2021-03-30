@@ -46,4 +46,7 @@ public class CocktailEntity extends BaseEntity {
     @ManyToOne
     private UserEntity user;
 
+    @OneToMany
+    private Set<LogDetailEntity> logs;
+
 }

@@ -56,31 +56,27 @@
 <!-- Main -->
 <div id="main" class="wrapper style1">
     <div class="wrapper style2">
+        <i class="zmdi zmdi-arrow-right"></i>
         <section class="container">
             <header class="major">
-                <h2>Top Rated</h2>
+                <h2>Most Viewed</h2>
             </header>
-            <div class="row no-collapse-1">
-                <section class="4u">
-                    <a href="#" class="image feature"><img src="images/pic02.jpg" alt=""></a>
-                    <p>Nam in massa. Sed vel tellus. Curabitur sem urna, consequat vel, suscipit in, mattis placerat.
-                    </p>
-                </section>
-                <section class="4u">
-                    <a href="#" class="image feature"><img src="images/pic03.jpg" alt=""></a>
-                    <p>Donec ornare neque ac sem. Mauris aliquet. Aliquam sem leo, vulputate sed, convallis. Donec
-                        magna.</p>
-                </section>
-                <section class="4u">
-                    <a href="#" class="image feature"><img src="images/pic04.jpg" alt=""></a>
-                    <p>Curabitur sem urna, consequat vel, suscipit convallis sem leo, mattis placerat, nulla. Sed ac
-                        leo.</p>
+            <div th:object="${mostViewedCocktails}" class="row no-collapse-1">
+                <section th:each="cocktail: ${mostViewedCocktails}" class="4u">
+                    <div class="item">
+                        <a th:href="@{/cocktails/{id}(id=${cocktail.id})}" class="image feature">
+                            <img class="img" th:src="${cocktail.imgUrl}"
+                                 alt=""></a>
+                        <span th:text="${cocktail.baseAlcohol.name()}">Vodka</span>
+                        <p th:text="${cocktail.name}">Bloody Merry</p>
+                    </div>
                 </section>
             </div>
             <form th:action="@{/cocktails/all}" th:method="GET">
                 <button type="submit" class="btn pull-right button">Explore More</button>
             </form>
         </section>
+        <i class="zmdi zmdi-arrow-left"></i>
     </div>
 </div>
 
