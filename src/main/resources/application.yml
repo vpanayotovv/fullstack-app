@@ -17,3 +17,6 @@ spring:
     hiddenmethod:
       filter:
         enabled: true
+
+scheduling:
+  work-cron: "0 0 * * * *"

@@ -7,13 +7,12 @@ import com.project.cocktailapp.repository.LogDetailsRepository;
 import com.project.cocktailapp.service.CocktailService;
 import com.project.cocktailapp.service.LogDetailsService;
 import com.project.cocktailapp.service.UserService;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Set;
 
 @Service
 public class LogDetailsServiceImpl implements LogDetailsService {
@@ -42,5 +41,10 @@ public class LogDetailsServiceImpl implements LogDetailsService {
         logDetailEntity.setOnTime(LocalDateTime.now());
 
         logDetailsRepository.save(logDetailEntity);
+    }
+
+    @Scheduled(cron = "${scheduling.work-cron}")
+    public void cleanLogDetailsTable(){
+        logDetailsRepository.deleteAll();
     }
 }
