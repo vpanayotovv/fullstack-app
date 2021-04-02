@@ -27,6 +27,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.io.FileNotFoundException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -132,20 +133,26 @@ public class CocktailServiceImpl implements CocktailService {
         CocktailEntity cocktailEntity = modelMapper.map(cocktailAddBindingModel,CocktailEntity.class);
         UserEntity userEntity = userService.getUserByUsername(cocktailAddBindingModel.getUsername());
         cocktailEntity.setUser(userEntity);
-        String[] split = cocktailAddBindingModel.getProducts().split("-");
-        ProductEntity productEntity = new ProductEntity();
-        for (int i = 0; i < split.length; i++) {
-            String product = split[0];
-            double quantity = Double.parseDouble(split[1]);
-            productEntity.setName(product);
-            productEntity.setQuantity(quantity);
+        Set<ProductEntity> products = new HashSet<>();
+        String[] input = cocktailAddBindingModel.getProducts().split("\\r?\\n");
+        for (String line : input) {
+            String[] split = line.split("-");
+            for (int i = 0; i < split.length -1; i++) {
+                String product = split[0];
+                double quantity = Double.parseDouble(split[1]);
+                ProductEntity productEntity = new ProductEntity();
+                productEntity.setName(product);
+                productEntity.setQuantity(quantity);
+                products.add(productEntity);
+            }
         }
-        cocktailEntity.setProducts(Set.of(productEntity));
+        cocktailEntity.setProducts(products);
         cocktailEntity.setAddedOn(LocalDateTime.now());
         cocktailEntity.setBaseAlcohol(alcoholRepository
                 .findByBaseName(cocktailAddBindingModel.getBaseAlcohol())
                 .orElseThrow(()-> new EntityNotFoundException("no such alcohol")));
 
+        System.out.println();
         cocktailRepository.save(cocktailEntity);
     }
 

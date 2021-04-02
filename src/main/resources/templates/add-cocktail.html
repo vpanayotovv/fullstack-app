@@ -31,6 +31,7 @@
             <div class="form-wrapper">
                 <small th:if="${#fields.hasErrors('baseAlcohol')}" th:errors="*{baseAlcohol}" class="text-danger"></small>
                 <select th:field="*{baseAlcohol}" name="baseAlcohol" class="form-control">
+                    <option value="" selected>Select alcohol</option>
                     <option th:each="a : ${T(com.project.cocktailapp.model.entity.enums.BaseAlcoholName).values()}"
                             th:value="${a}"
                             th:text="${a}">
@@ -49,11 +50,12 @@
             </div>
             <div class="form-wrapper">
                 <select th:field="*{method}" name="method" id="method" class="form-control">
+                    <option value="" selected>Select method</option>
                     <option th:each="m : ${T(com.project.cocktailapp.model.entity.enums.MethodName).values()}"
                             th:value="${m}"
                             th:text="${#strings.capitalize(#strings.toLowerCase(m))}">
                 </select>
-                <i class="zmdi zmdi-audio"></i>
+                <i class="zmdi zmdi-caret-down"></i>
             </div>
             <div class="form-wrapper">
                 <label>
@@ -66,7 +68,7 @@ ingredient-quantity
 ingredient-quantity
 "></textarea><small th:if="${#fields.hasErrors('products')}" th:errors="*{products}" class="text-danger"></small>
                 </label>
-                <i class="zmdi zmdi-lock"></i>
+                <i class="zmdi zmdi-drink"></i>
             </div>
             <button>Submit
                 <i class="zmdi zmdi-arrow-right"></i>

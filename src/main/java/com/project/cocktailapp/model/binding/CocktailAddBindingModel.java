@@ -1,5 +1,6 @@
 package com.project.cocktailapp.model.binding;
 
+import com.project.cocktailapp.config.CustomValidation;
 import com.project.cocktailapp.model.entity.enums.BaseAlcoholName;
 import com.project.cocktailapp.model.entity.enums.MethodName;
 import lombok.Getter;
@@ -31,7 +32,7 @@ public class CocktailAddBindingModel {
     private String videoUrl;
 
     @NotBlank
-    @Pattern(regexp = "[a-zA-Z ]+-[0-9]+",message = "Follow the pattern")
+    @CustomValidation(regex = "[a-zA-Z ]+-[0-9]+")
     private String products;
 
     @NotNull
