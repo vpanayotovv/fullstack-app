@@ -133,8 +133,20 @@ public class CocktailServiceImpl implements CocktailService {
         CocktailEntity cocktailEntity = modelMapper.map(cocktailAddBindingModel,CocktailEntity.class);
         UserEntity userEntity = userService.getUserByUsername(cocktailAddBindingModel.getUsername());
         cocktailEntity.setUser(userEntity);
-        Set<ProductEntity> products = new HashSet<>();
         String[] input = cocktailAddBindingModel.getProducts().split("\\r?\\n");
+        Set<ProductEntity> products = new HashSet<>();
+        setProductsFromInput(products, input);
+        cocktailEntity.setProducts(products);
+        cocktailEntity.setAddedOn(LocalDateTime.now());
+        cocktailEntity.setBaseAlcohol(alcoholRepository
+                .findByBaseName(cocktailAddBindingModel.getBaseAlcohol())
+                .orElseThrow(()-> new EntityNotFoundException("no such alcohol")));
+
+        System.out.println();
+        cocktailRepository.save(cocktailEntity);
+    }
+
+    private void setProductsFromInput(Set<ProductEntity> products, String[] input) {
         for (String line : input) {
             String[] split = line.split("-");
             for (int i = 0; i < split.length -1; i++) {
@@ -146,14 +158,6 @@ public class CocktailServiceImpl implements CocktailService {
                 products.add(productEntity);
             }
         }
-        cocktailEntity.setProducts(products);
-        cocktailEntity.setAddedOn(LocalDateTime.now());
-        cocktailEntity.setBaseAlcohol(alcoholRepository
-                .findByBaseName(cocktailAddBindingModel.getBaseAlcohol())
-                .orElseThrow(()-> new EntityNotFoundException("no such alcohol")));
-
-        System.out.println();
-        cocktailRepository.save(cocktailEntity);
     }
 
     @Override
