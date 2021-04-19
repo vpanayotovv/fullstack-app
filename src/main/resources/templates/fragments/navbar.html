@@ -18,7 +18,6 @@
                     <li><a href="/alcohols/alcohol-free">Аlcohol-free</a>
                 </ul>
             </li>
-            <li><a href="#">News</a></li>
             <li sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_BARTENDER')"><a href="/cocktails/add">Add Cocktail</a></li>
             <li><a href="#" >Profile</a>
                 <ul>
@@ -37,7 +36,6 @@
                 <a href="#">Admin Panel</a>
                 <ul>
                     <li><a href="/admin/role-add">Role Manager</a></li>
-                    <li><a href="#">Statistics</a></li>
                 </ul>
             </li>
             <li>
